@@ -1,0 +1,177 @@
+:root{
+  /* dark black & yellow theme */
+  --primary: #ffd400;  /* main yellow */
+  --accent: #ffcc33;   /* lighter yellow */
+  --bg: #0f1113;       /* page background */
+  --surface: #141617;  /* card background */
+  --muted: #9ea3a8;    /* secondary text */
+  --card-shadow: 0 8px 28px rgba(0,0,0,0.6);
+  --card-shadow-2: 0 18px 48px rgba(0,0,0,0.7);
+}
+
+/* PAGE LAYOUT */
+.sign-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #eef2f3;
+}
+
+/* CARD */
+.sign-card {
+  width: 360px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: var(--card-shadow), 0 2px 8px rgba(255,204,51,0.02);
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 300ms cubic-bezier(.22,.9,.35,1), box-shadow 300ms;
+  animation: fadeUp 420ms cubic-bezier(.22,.9,.35,1) both;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Subtle lift on hover of the whole card */
+.sign-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--card-shadow-2), 0 8px 20px rgba(255,204,51,0.06);
+  border-color: rgba(255,204,51,0.04);
+}
+
+/* Heading with hover animation */
+.sign-heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 6px 0 18px;
+  display: inline-block;
+  transition: transform 300ms cubic-bezier(.22,.9,.35,1), filter 300ms, text-shadow 300ms;
+}
+
+.sign-heading:hover {
+  transform: translateY(-6px) rotate(-2deg) scale(1.03);
+  filter: drop-shadow(0 12px 30px rgba(255,204,51,0.22));
+  text-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+/* FORM FIELDS */
+.form-row {
+  margin-bottom: 14px;
+}
+
+.input-field {
+  width: 100%;
+  max-width: 280px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.04);
+  outline: none;
+  font-size: 15px;
+  transition: transform 220ms cubic-bezier(.22,.9,.35,1), box-shadow 220ms, border-color 220ms;
+  background: rgba(255,255,255,0.02);
+  box-shadow: none;
+  color: #eef2f3;
+}
+
+/* Hover + focus: colored shadow matching theme */
+.input-field:hover,
+.input-field:focus {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(255,204,51,0.28);
+  box-shadow:
+    0 8px 22px rgba(255,204,51,0.06),
+    0 4px 14px rgba(0,0,0,0.6);
+  background: rgba(255,255,255,0.025);
+}
+
+/* PLACEHOLDER color */
+.input-field::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+/* BUTTONS */
+.btn-primary {
+  width: 140px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #111;
+  background: linear-gradient(90deg, var(--primary), var(--accent) 60%);
+  transition: transform 220ms cubic-bezier(.22,.9,.35,1), box-shadow 220ms, opacity 160ms;
+  box-shadow: 0 10px 28px rgba(255,204,51,0.16);
+}
+
+/* disabled */
+.btn-primary:disabled,
+.btn-primary[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Hover: colored multi-layer shadow + lift */
+.btn-primary:not(:disabled):hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow:
+    0 20px 50px rgba(255,204,51,0.22),
+    0 8px 24px rgba(0,0,0,0.6);
+}
+
+/* small link button for login */
+.btn-link {
+  margin-left: 6px;
+  padding: 8px 10px;
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid rgba(255,204,51,0.06);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 180ms, box-shadow 180ms, background 180ms;
+}
+
+.btn-link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(255,204,51,0.12);
+  background: linear-gradient(90deg, rgba(255,204,51,0.02), rgba(255,255,255,0.01));
+}
+
+/* ERROR TEXT */
+.error-text {
+  color: #ff8b8b;
+  min-height: 20px;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+/* signup row */
+.signup-row {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Card entrance animation */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(12px) scale(0.995); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 420px) {
+  .sign-card { width: calc(100% - 36px); padding: 22px; }
+  .input-field { max-width: 100%; }
+  .btn-primary { width: 100%; }
+}
+
+/* small accessibility tweak: focus outline */
+.input-field:focus-visible {
+  outline: 3px solid rgba(255,204,51,0.12);
+  outline-offset: 2px;
+}

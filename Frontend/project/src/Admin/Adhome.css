@@ -1,0 +1,122 @@
+/* Admin Layout */
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+  background: #0f1113;
+  color: #f2f4f6;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 240px;
+  background: linear-gradient(
+    180deg,
+    rgba(15,17,19,0.96),
+    rgba(20,22,23,0.98)
+  );
+  padding: 24px 20px;
+  box-shadow: 6px 0 20px rgba(0,0,0,0.6);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Admin title */
+.sidebar h3 {
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  text-shadow: 0 6px 18px rgba(255,204,51,0.25);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Sidebar menu */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .nav-item {
+  margin-bottom: 12px;
+}
+
+/* Sidebar links */
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: #cfcfcf;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+  text-decoration: none;
+}
+
+/* Hover animation */
+.sidebar .nav-link:hover {
+  background: rgba(255,204,51,0.08);
+  color: var(--primary);
+  transform: translateX(6px);
+  box-shadow: 0 6px 18px rgba(255,204,51,0.12);
+}
+
+/* Selected Active page styling */
+.sidebar .nav-link.active {
+  background: rgba(255,204,51,0.12);
+  color: var(--primary);
+  box-shadow: 0 6px 18px rgba(255,204,51,0.16);
+  border-left: 4px solid var(--primary);
+  padding-left: 10px;
+}
+
+/* Sidebar buttons */
+.sidebar button {
+  margin-top: 15px;
+  width: 100%;
+  border: none;
+  border-radius: 30px;
+  padding: 10px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  color: #111;
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 6px 18px rgba(255,204,51,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sidebar button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(255,204,51,0.22);
+}
+
+/* Main admin content area */
+.admin-content {
+  margin-left: 240px; /* Offset the fixed sidebar */
+  flex: 1;
+  padding: 30px;
+  background: radial-gradient(
+    circle at top,
+    rgba(255,204,51,0.04),
+    transparent 40%
+  );
+  min-height: 100vh;
+}

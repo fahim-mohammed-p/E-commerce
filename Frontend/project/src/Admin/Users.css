@@ -1,0 +1,93 @@
+.users-container {
+  max-width: 800px; /* smaller width for vertical list */
+  margin: 50px auto;
+  color: #f2f2f2;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.users-heading {
+  color: #ffd400;
+  font-weight: 800;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+.users-list {
+  display: flex;
+  flex-direction: column; /* stack users vertically */
+  gap: 20px;
+}
+
+.user-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  border-radius: 30px;
+  padding: 20px;
+  width: 100%; /* full width */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  justify-content: space-between; /* name/status on left, button on right */
+  align-items: center;
+}
+
+.user-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 22px 50px rgba(0,0,0,0.7), 0 8px 20px rgba(255,204,51,0.06);
+}
+
+.user-name, .user-status {
+  color: #c0c0c0;
+  margin: 0 0 4px 0;
+  font-weight: 700;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-btn {
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ban-btn {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  color: #111;
+}
+
+.ban-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(219, 16, 16, 0.35);
+}
+
+.unban-btn {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: #111;
+}
+
+.unban-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(34,197,94,0.35);
+}
+
+@media (max-width: 576px) {
+  .user-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-btn {
+    margin-top: 10px;
+    width: 100%;
+  }
+}

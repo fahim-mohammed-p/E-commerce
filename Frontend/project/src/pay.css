@@ -1,0 +1,69 @@
+.payment-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #141617;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  color: #f2f2f2;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.payment-container h2 {
+  color: #ffd400;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.payment-option:hover {
+  background: rgba(255, 212, 0, 0.1);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.payment-option input {
+  cursor: pointer;
+}
+
+.payment-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #ffd400, #ffcc33);
+  color: #111;
+  border: none;
+  padding: 12px 0;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 20px;
+}
+
+.payment-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 36px rgba(255, 204, 51, 0.2);
+}
+
+@media (max-width: 576px) {
+  .payment-container {
+    padding: 20px;
+    margin: 30px 10px;
+  }
+  .payment-option {
+    font-size: 0.95rem;
+  }
+}
+
