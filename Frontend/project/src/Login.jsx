@@ -62,9 +62,12 @@ navigate("/");
 
   }catch (error) {
   console.log(error.response?.data);
-  const errMsg = error.response?.data?.detail || "Login Failed";
+  const errMsg = error.response?.data?.error || error.response?.data?.detail || "Login Failed";
   setError(errMsg);
   toast.error(errMsg);
+  if (errMsg === "You are banned by admin") {
+    navigate("/Ban");
+  }
 }
 
   setLoading(false);

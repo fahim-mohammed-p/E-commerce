@@ -59,6 +59,14 @@ class AdminLogin(APIView):
             if user_obj:
                 username = user_obj.username
 
+        user_exists = User.objects.filter(username=username).first()
+        if user_exists and not user_exists.is_active:
+            if user_exists.check_password(password):
+                return Response(
+                    {"error": "You are banned by admin"},
+                    status=403
+                )
+
         user = authenticate(
             username=username,
             password=password
