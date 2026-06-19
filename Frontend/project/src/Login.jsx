@@ -111,10 +111,6 @@ navigate("/");
           </div>
         </form>
 
-        <div className="error-text">
-          {error}
-        </div>
-
         <div className="signup-row">
           <small>
             New here?{" "}

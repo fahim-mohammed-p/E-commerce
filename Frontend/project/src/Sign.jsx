@@ -140,8 +140,6 @@ function Sign() {
           </div>
         </form>
 
-        {error && <div className="error-text">{error}</div>}
-
         <div className="signup-row">
           <small>
             Already signed up?{" "}

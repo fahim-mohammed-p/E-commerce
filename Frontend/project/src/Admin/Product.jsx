@@ -41,45 +41,65 @@ function Product() {
   }, [navigate]);
 
   const addProduct = async() => {
-    if (!name || !category || !price || !image || !inch) {
+    if (!name.trim() || !category || !price || !image.trim() || !inch) {
       toast.error("Please fill all fields");
       return;
     }
 
+    const payload = {
+      product_name: name,
+      category: Number(category),
+      price: Number(price),
+      inch: Number(inch),
+      image_url: image,
+    };
+
     if(editId){
       try{
-        const res=await api.put(`products/${editId}/`,{
-          product_name: name,
-          category: Number(category),
-          price: Number(price),
-          inch: Number(inch),
-          image_url: image,
-        });
+        const res=await api.put(`products/${editId}/`, payload);
         const updateProduct = res.data;
         setProducts(products.map((p)=>(p.id===editId ? updateProduct : p)))
         clearform();
         toast.success("Product updated successfully");
       }catch(err){
         console.log("failed",err);
-        toast.error("Failed to update product");
+        let errMsg = "Failed to update product";
+        if (err.response && err.response.data) {
+          const errorData = err.response.data;
+          if (typeof errorData === "object") {
+            const keys = Object.keys(errorData);
+            if (keys.length > 0) {
+              const firstKey = keys[0];
+              const messages = errorData[firstKey];
+              errMsg = Array.isArray(messages) ? `${firstKey}: ${messages[0]}` : `${firstKey}: ${messages}`;
+            }
+          }
+        }
+        toast.error(errMsg);
       }
       return;
     }
     try{
-      const res=await api.post("products/",{
-        product_name: name,
-        category: Number(category),
-        price: Number(price),
-        inch: Number(inch),
-        image_url: image,
-      });
+      const res=await api.post("products/", payload);
       const savedProduct= res.data;
       setProducts([...products,savedProduct]);
       clearform();
       toast.success("Product added successfully");
     }catch(err){
       console.log("Failed",err);
-      toast.error("Failed to add product");
+      let errMsg = "Failed to add product";
+      if (err.response && err.response.data) {
+        const errorData = err.response.data;
+        if (typeof errorData === "object") {
+          const keys = Object.keys(errorData);
+          if (keys.length > 0) {
+            const firstKey = keys[0];
+            const messages = errorData[firstKey];
+            errMsg = Array.isArray(messages) ? `${firstKey}: ${messages[0]}` : `${firstKey}: ${messages}`;
+          }
+        }
+      }
+      toast.error(errMsg);
     }
   }
 
