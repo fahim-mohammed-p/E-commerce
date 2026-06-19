@@ -71,7 +71,7 @@ function Product() {
             if (keys.length > 0) {
               const firstKey = keys[0];
               const messages = errorData[firstKey];
-              errMsg = Array.isArray(messages) ? `${firstKey}: ${messages[0]}` : `${firstKey}: ${messages}`;
+              errMsg = Array.isArray(messages) ? messages[0] : messages;
             }
           }
         }
@@ -95,7 +95,7 @@ function Product() {
           if (keys.length > 0) {
             const firstKey = keys[0];
             const messages = errorData[firstKey];
-            errMsg = Array.isArray(messages) ? `${firstKey}: ${messages[0]}` : `${firstKey}: ${messages}`;
+            errMsg = Array.isArray(messages) ? messages[0] : messages;
           }
         }
       }

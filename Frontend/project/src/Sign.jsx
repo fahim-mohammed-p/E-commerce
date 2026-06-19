@@ -58,9 +58,9 @@ function Sign() {
           const messages = errorData[firstKey];
           let errMsg = "";
           if (Array.isArray(messages) && messages.length > 0) {
-            errMsg = `${firstKey}: ${messages[0]}`;
+            errMsg = messages[0];
           } else if (typeof messages === "string") {
-            errMsg = `${firstKey}: ${messages}`;
+            errMsg = messages;
           } else {
             errMsg = JSON.stringify(errorData);
           }
