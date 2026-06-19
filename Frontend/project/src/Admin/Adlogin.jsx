@@ -13,7 +13,7 @@ function Adlogin() {
 
   const handleLogin = async () => {
   if (!username || !password) {
-    toast.error("Please fill all fields");
+    toast.error("Please fill in all required fields.");
     return;
   }
 

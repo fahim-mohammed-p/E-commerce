@@ -42,7 +42,7 @@ function Product() {
 
   const addProduct = async() => {
     if (!name.trim() || !category || !price || !image.trim() || !inch) {
-      toast.error("Please fill all fields");
+      toast.error("Please fill in all required fields.");
       return;
     }
 

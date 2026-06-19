@@ -22,8 +22,8 @@ function Sign() {
   setError("");
 
   if (!name || !email || !password) {
-    setError("Please fill all fields");
-    toast.error("Please fill all fields");
+    setError("Please fill in all required fields.");
+    toast.error("Please fill in all required fields.");
     return;
   }
 
