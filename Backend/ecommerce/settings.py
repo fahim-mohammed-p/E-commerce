@@ -158,7 +158,12 @@ EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Ithu puthiyathayi add cheyyanam
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+
+CORS_ALLOWED_ORIGINS = [
+    "https://e-commerce-beige-psi-21.vercel.app",
+    "http://localhost:5173",
+]
 
 
 
