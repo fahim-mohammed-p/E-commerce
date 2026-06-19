@@ -8,6 +8,7 @@ from rest_framework.permissions import AllowAny
 from .serializers import regserializer, UserListSerializer
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
+import threading
 
 User = get_user_model()
 
@@ -21,16 +22,22 @@ class register(APIView):
         if serializer.is_valid():
             user = serializer.save()
 
-            try:
-                send_mail(
-                    "Welcome 🎉",
-                    f"Hi {user.username}, your account has been created successfully!",
-                    settings.EMAIL_HOST_USER,
-                    [user.email],
-                    fail_silently=False,
-                )
-            except Exception:
-                pass 
+            def send_async_email(user_username, user_email):
+                try:
+                    send_mail(
+                        "Welcome 🎉",
+                        f"Hi {user_username}, your account has been created successfully!",
+                        settings.EMAIL_HOST_USER,
+                        [user_email],
+                        fail_silently=False,
+                    )
+                except Exception:
+                    pass
+
+            threading.Thread(
+                target=send_async_email,
+                args=(user.username, user.email)
+            ).start()
 
             return Response(
                 {'message': 'Registered Successfully'},
