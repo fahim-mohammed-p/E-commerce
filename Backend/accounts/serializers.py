@@ -14,13 +14,13 @@ class regserializer(serializers.ModelSerializer):
     def validate_username(self, value):
         value = value.strip()
         if User.objects.filter(username__iexact=value).exists():
-            raise serializers.ValidationError("A user with this name already exists.")
+            raise serializers.ValidationError("This username is already taken. Try another name.")
         return value
 
     def validate_email(self, value):
         value = value.strip()
         if User.objects.filter(email__iexact=value).exists():
-            raise serializers.ValidationError("A user with this email already exists.")
+            raise serializers.ValidationError("This email address is already registered. Try logging in instead.")
         return value
 
     def create(self, validated_data):
