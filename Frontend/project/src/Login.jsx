@@ -28,7 +28,10 @@ function Login() {
   setLoading(true);
 
   try {
-    const response = await api.post("accounts/login/",{username,password,});
+    const response = await api.post("accounts/login/", {
+      username: username.trim(),
+      password,
+    });
 
      const data = response.data;
 

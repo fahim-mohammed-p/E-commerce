@@ -39,8 +39,8 @@ function Sign() {
     await api.post(
       "accounts/register/",
       {
-        username: name,
-        email: email,
+        username: name.trim(),
+        email: email.trim(),
         password: password,
       }
     );

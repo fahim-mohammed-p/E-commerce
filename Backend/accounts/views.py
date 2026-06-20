@@ -54,10 +54,12 @@ class AdminLogin(APIView):
         username = request.data.get("username")
         password = request.data.get("password")
 
-        if username and "@" in username:
-            user_obj = User.objects.filter(email=username).first()
-            if user_obj:
-                username = user_obj.username
+        if username:
+            username = username.strip()
+            if "@" in username:
+                user_obj = User.objects.filter(email__iexact=username).first()
+                if user_obj:
+                    username = user_obj.username
 
         user_exists = User.objects.filter(username=username).first()
         if user_exists and not user_exists.is_active:
